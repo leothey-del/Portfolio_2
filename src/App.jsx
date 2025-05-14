@@ -101,7 +101,7 @@ export default function App() {
       <section id="home" className="pt-24 pb-16 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-10 md:mb-0">
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-            Hi, I'm <span className="text-blue-400">John Doe</span>.<br />
+            Hi, I'm <span className="text-blue-400">Leo Ortega</span>.<br />
             Web Developer & Designer.
           </h2>
           <p className="mt-4 text-gray-300">
