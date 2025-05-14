@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Button from './components/Button';
-import ProjectCard from './components/card/ProjectCard';
+
 import GithubButton from './components/buttons/GithubButton';
-import SkillButton from './components/buttons/SkillButton';
-import HireButton from './components/buttons/HireButton';
+
+
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
