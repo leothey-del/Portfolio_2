@@ -21,9 +21,9 @@ export default function App() {
       image: 'https://placehold.co/600x400/1f2937/e5e7eb?text=Weather+App ',
     },
     {
-      title: 'Task Manager',
+      title: 'Expense Tracker',
       description: 'A simple task management tool with local storage persistence.',
-      image: 'https://placehold.co/600x400/1f2937/e5e7eb?text=Task+Manager ',
+      image: '/capture.png', 
     },
   ];
 
