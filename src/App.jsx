@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {  Routes, Route, Link } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
@@ -10,7 +11,8 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    
+    <>
+      <Toaster position="top-center" />
       <div className="bg-gray-900 text-white min-h-screen">
         {/* Navigation */}
         <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-md border-b border-gray-800">
@@ -95,6 +97,6 @@ export default function App() {
           </Routes>
         </div>
       </div>
-  
+    </>
   );
 }
