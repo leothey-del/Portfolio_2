@@ -31,7 +31,7 @@ const Home = () => {
         </div>
         <div className="md:w-1/2 flex justify-center">
           <img
-            src="https://placehold.co/400x400/1f2937/e5e7eb?text=Profile "
+            src="/profile.png "
             alt="Profile"
             className="rounded-full shadow-lg w-64 h-64 object-cover border-4 border-blue-500"
           />
