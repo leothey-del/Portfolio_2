@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const GithubButton = () => {
+const GithubButton = ({url}) => {
   return (
+     <a href={url} target="_blank" rel="noopener noreferrer" className="github-button-link">
     <div className='mt-3'>
     <StyledWrapper>
       <div className="button-icon">
@@ -18,6 +19,7 @@ const GithubButton = () => {
       </div>
     </StyledWrapper>
     </div>
+    </a>
   );
 }
 
