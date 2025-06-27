@@ -9,7 +9,7 @@ import GithubButton from '../components/buttons/GithubButton';
       title: ' Microservices API Gateway for a Social App',
       description: 'A full-stack social media application built with a scalable backend using a microservices architecture. The system features a dedicated API Gateway in Node.js that routes requests to independent services for user authentication and post management, demonstrating a modern, decoupled approach to web application design.',
       image: '/social.png',
-      githubUrl: 'https://github.com/leothey-del/EcommerceWeb',
+      githubUrl: 'https://github.com/leothey-del/socialMedia',
     },
     {
       title: 'E-commerce Dashboard',
