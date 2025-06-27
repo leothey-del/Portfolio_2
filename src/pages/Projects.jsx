@@ -6,6 +6,12 @@ import GithubButton from '../components/buttons/GithubButton';
   // --- Project Data ---
   const projects = [
     {
+      title: ' Microservices API Gateway for a Social App',
+      description: 'A full-stack social media application built with a scalable backend using a microservices architecture. The system features a dedicated API Gateway in Node.js that routes requests to independent services for user authentication and post management, demonstrating a modern, decoupled approach to web application design.',
+      image: '/social.png',
+      githubUrl: 'https://github.com/leothey-del/EcommerceWeb',
+    },
+    {
       title: 'E-commerce Dashboard',
       description: 'A full-stack e-commerce admin panel built with the MERN stack (MongoDB, Express.js, React, Node.js) and styled with Tailwind CSS. Powered by Vite for a fast and modern development experience.',
       image: '/ecommerce.png',
