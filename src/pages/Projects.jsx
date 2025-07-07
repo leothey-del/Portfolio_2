@@ -1,16 +1,9 @@
 import React from 'react'
 // src/pages/Projects.jsx
-import { motion } from 'framer-motion';
 
 import GithubButton from '../components/buttons/GithubButton';
   // --- Project Data ---
   const projects = [
-    {
-      title: ' Microservices API Gateway for a Social App',
-      description: 'A full-stack social media application built with a scalable backend using a microservices architecture. The system features a dedicated API Gateway in Node.js that routes requests to independent services for user authentication and post management, demonstrating a modern, decoupled approach to web application design.',
-      image: '/social.png',
-      githubUrl: 'https://github.com/leothey-del/socialMedia',
-    },
     {
       title: 'E-commerce Dashboard',
       description: 'A full-stack e-commerce admin panel built with the MERN stack (MongoDB, Express.js, React, Node.js) and styled with Tailwind CSS. Powered by Vite for a fast and modern development experience.',
@@ -38,21 +31,12 @@ const Projects = () => {
   return (
     <div>
        {/* Projects Section */}
-<section id="projects" className="py-16 px-6">
+<section id="projects" className="py-16 px-6 ">
   <div className="max-w-6xl mx-auto">
     <h2 className="text-3xl font-bold text-center">My Projects</h2>
     <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {projects.map((project, index) => (
-        <motion.div
-          key={index}
-          className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition flex flex-col backdrop-blur-lg bg-opacity-60 border border-gray-700"
-          whileHover={{ scale: 1.04, boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)' }}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          viewport={{ once: true }}
-          style={{ background: 'rgba(36, 41, 46, 0.7)', boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)', border: '1px solid rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)' }}
-        >
+        <div key={index} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition flex flex-col">
           <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
           <div className="p-6 flex flex-col flex-grow">
             <h3 className="text-xl font-semibold">{project.title}</h3>
@@ -60,6 +44,8 @@ const Projects = () => {
                   <GithubButton url={project.githubUrl} />
             {/* Links Container */}
             <div className="mt-4 flex items-center space-x-6">
+            
+
               {/* Add the simple text link here */}
               {project.liveUrl && (
                 <a
@@ -72,8 +58,9 @@ const Projects = () => {
                 </a>
               )}
             </div>
+
           </div>
-        </motion.div>
+        </div>
       ))}
     </div>
   </div>
