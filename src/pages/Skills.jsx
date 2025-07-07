@@ -2,10 +2,10 @@ import HTML from "../assets/html.png";
 import CSS from "../assets/css.png";
  import JAVASCRIPT from "../assets/javascript.png";
  import REACT from "../assets/react.png";
- import NODE from "../assets/nodeJS.png";
+ import NODE from "../assets/nodejs.png";
 import WORDPRESS from "../assets/wordpress.png";
  import MONGO from "../assets/mongodb.png";
- import PG from "../assets/Postgre.png";
+ import PG from "../assets/postgre.png";
  import SUPABASE from "../assets/supabase.png";
 
 const skill_logos = [
