@@ -17,7 +17,7 @@ const skill_logos = [
  { name: "MONGO DB", img: MONGO },
  { name: "POSTGRES", img: PG },
 { name: "SUPABASE", img: SUPABASE },
-
+{ name: "NODE JS", img: NODE },
  
 ];
 
