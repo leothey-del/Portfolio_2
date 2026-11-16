@@ -12,20 +12,35 @@ function App() {
     const savedTheme = window.localStorage.getItem("portfolio-theme");
     return savedTheme === "dark" || savedTheme === "light" ? savedTheme : "light";
   });
+  const [githubBatKey, setGithubBatKey] = useState(0);
+  const [githubBatLanded, setGithubBatLanded] = useState(false);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     window.localStorage.setItem("portfolio-theme", theme);
   }, [theme]);
 
+  const handleThemeToggle = () => {
+    setGithubBatLanded(false);
+    if (theme === "dark") {
+      setGithubBatKey((key) => key + 1);
+    }
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   return (
     <div className="theme-page min-h-screen">
       <Navbar
         theme={theme}
-        onToggleTheme={() => setTheme(theme === "dark" ? "light" : "dark")}
+        onToggleTheme={handleThemeToggle}
+        githubBatLanded={githubBatLanded}
       />
       <main>
-        <Home />
+        <Home
+          theme={theme}
+          githubBatKey={githubBatKey}
+          onGithubBatArrive={() => setGithubBatLanded(true)}
+        />
         <About />
         <Skills />
         <Projects />

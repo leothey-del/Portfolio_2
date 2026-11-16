@@ -1,8 +1,36 @@
+import { useEffect, useRef, useState } from 'react';
 import { FaArrowRight, FaCode, FaGithub } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
 import WindMap from '../components/WindMap';
 
-const Home = () => {
+const Home = ({ theme, githubBatKey, onGithubBatArrive }) => {
+  const githubLinkRef = useRef(null);
+  const [githubBat, setGithubBat] = useState(null);
+  const [githubIconGone, setGithubIconGone] = useState(false);
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      setGithubBat(null);
+      setGithubIconGone(false);
+      return;
+    }
+
+    if (!githubBatKey || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    const githubIcon = githubLinkRef.current?.querySelector('svg');
+    if (!githubIcon) return;
+
+    const { left, top, width, height } = githubIcon.getBoundingClientRect();
+    setGithubBat({
+      x: left + (width - 24) / 2,
+      y: top + (height - 24) / 2,
+      phase: 'transforming',
+    });
+    setGithubIconGone(true);
+  }, [githubBatKey, theme]);
+
   return (
     <section id="home" className="flex min-h-[100svh] items-center px-6 pb-20 pt-32">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-14 md:flex-row">
@@ -41,15 +69,63 @@ const Home = () => {
               Get in touch
             </ScrollLink>
             <a
+              ref={githubLinkRef}
               href="https://github.com/leothey-del"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Leo Ortega on GitHub"
-              className="theme-secondary theme-hover inline-flex items-center gap-2 rounded-lg px-3 py-3 transition"
+              className="home-github-link theme-secondary theme-hover inline-flex items-center gap-2 rounded-lg px-3 py-3 transition"
             >
-              <FaGithub aria-hidden="true" size={20} />
+              <FaGithub
+                aria-hidden="true"
+                className={`home-github-icon${githubIconGone ? ' is-hidden' : ''}`}
+                size={20}
+              />
               GitHub
             </a>
+            {githubBat && (
+              <span
+                aria-hidden="true"
+                style={{
+                  '--github-bat-x': `${githubBat.x}px`,
+                  '--github-bat-y': `${githubBat.y}px`,
+                  '--github-bat-target-x': `${githubBat.targetX}px`,
+                  '--github-bat-target-y': `${githubBat.targetY}px`,
+                }}
+                className={`github-bat-replacement is-${githubBat.phase}`}
+                onAnimationEnd={(event) => {
+                  if (
+                    githubBat.phase === 'transforming'
+                    && event.animationName === 'github-bat-frames'
+                  ) {
+                    const tree = document.querySelector('.navbar-tree-container');
+                    if (!tree) {
+                      console.error('Navbar tree target could not be found for the bat flight.');
+                      setGithubBat(null);
+                      return;
+                    }
+
+                    const treeBounds = tree.getBoundingClientRect();
+                    setGithubBat((bat) => (
+                      bat
+                        ? {
+                          ...bat,
+                          phase: 'flying',
+                          targetX: treeBounds.left + 40,
+                          targetY: treeBounds.top + 42,
+                        }
+                        : bat
+                    ));
+                  } else if (
+                    githubBat.phase === 'flying'
+                    && event.animationName === 'github-bat-fly-across'
+                  ) {
+                    setGithubBat(null);
+                    onGithubBatArrive();
+                  }
+                }}
+              />
+            )}
           </div>
         </div>
         <div className="relative w-full max-w-sm shrink-0 md:w-[38%]">

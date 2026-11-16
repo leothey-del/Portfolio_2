@@ -314,6 +314,14 @@ body {
   image-rendering: pixelated;
 }
 
+.navbar-tree-hanging-bat {
+  display: block;
+  width: 64px;
+  height: 76px;
+  background: url('./assets/tree-hanging-bat.png') 0 0 / 64px 76px no-repeat;
+  image-rendering: pixelated;
+}
+
 @keyframes tree-bat-takeoff {
   to {
     background-position: -616px 0;
@@ -344,6 +352,63 @@ body {
   background-position: -192px 0;
   transform: translate(var(--bat-burn-x), var(--bat-burn-y));
   animation: bat-burn-frames 1s steps(10) forwards;
+}
+
+.home-github-icon {
+  transition: opacity 120ms ease-out;
+}
+
+.home-github-icon.is-hidden {
+  opacity: 0;
+}
+
+.github-bat-replacement {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background: url('./assets/github-to-bat-sprite.png') 0 0 / 336px 24px no-repeat;
+  image-rendering: pixelated;
+  pointer-events: none;
+  transform: translate(var(--github-bat-x), var(--github-bat-y));
+}
+
+.github-bat-replacement.is-transforming {
+  animation: github-bat-frames 1.8s steps(13, end) forwards;
+}
+
+.github-bat-replacement.is-flying {
+  background-image: url('./assets/github-bat-flight-sprite.png');
+  background-size: 144px 24px;
+  animation:
+    github-bat-fly-frames 0.72s steps(6) infinite,
+    github-bat-fly-across 3.8s linear forwards;
+}
+
+@keyframes github-bat-frames {
+  to {
+    background-position: -312px 0;
+  }
+}
+
+@keyframes github-bat-fly-frames {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -144px 0;
+  }
+}
+
+@keyframes github-bat-fly-across {
+  from {
+    transform: translate(var(--github-bat-x), var(--github-bat-y)) scaleX(-1);
+  }
+  to {
+    transform: translate(var(--github-bat-target-x), var(--github-bat-target-y)) scaleX(-1);
+  }
 }
 
 @keyframes bat-flying-frames {
@@ -694,6 +759,7 @@ body {
   .bat-flying-sprite.is-burning {
     animation-duration: 1ms;
   }
+
 }
 
 .ui-btn {

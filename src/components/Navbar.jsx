@@ -4,7 +4,7 @@ import { Link as ScrollLink } from 'react-scroll';
 import JumpingSprite from './JumpingSprite';
 import ThemeToggle from './ThemeToggle';
 
-const Navbar = ({ theme, onToggleTheme }) => {
+const Navbar = ({ theme, onToggleTheme, githubBatLanded }) => {
   const [toggle, setToggle] = useState(false);
   const [jumping, setJumping] = useState(theme === 'light');
   const [runnerFlight, setRunnerFlight] = useState(null);
@@ -178,8 +178,10 @@ const Navbar = ({ theme, onToggleTheme }) => {
 
   return (
     <div className={`theme-navbar fixed w-full h-[80px] flex justify-between items-center pl-0 pr-4 z-10 ${jumping ? 'has-jumping-sprite' : ''} ${toggle ? 'is-mobile-menu-open' : ''}`}>
-      <span className="relative h-[76px] w-16 shrink-0" aria-hidden="true">
-        {theme === 'dark' && (treeDeparting || batInFlight) ? (
+      <span className="navbar-tree-container relative h-[76px] w-16 shrink-0" aria-hidden="true">
+        {githubBatLanded ? (
+          <span className="navbar-tree-hanging-bat" />
+        ) : theme === 'dark' && (treeDeparting || batInFlight) ? (
           <span
             className={`navbar-tree-bat-departure${batInFlight ? ' is-departed' : ''}`}
             onAnimationEnd={handleTreeDepartureEnd}
